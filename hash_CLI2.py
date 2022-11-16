@@ -15,7 +15,10 @@ while True:
     c=1
     print(Back.GREEN+Fore.BLACK+" "*10+"ELIJA NÚMERO DE OPCIÓN"+" "*10+Back.RESET+Fore.GREEN)
     for i in algoritmos:
-        print(f"{c}-Generar hash usando algoritmo {i.upper()}")
+        if c < 10:
+            print(f"0{c}-Generar hash usando algoritmo {i.upper()}")
+        else:
+            print(f"{c}-Generar hash usando algoritmo {i.upper()}")
         c+=1
     print(f"{c}-Finalizar programa")
 
@@ -41,3 +44,4 @@ while True:
         print("\n"+Back.RED+Fore.BLACK+str(e)+Fore.RESET+Back.RESET+"\n")
  
 print("PROGRAM FINISHED")
+

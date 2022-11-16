@@ -56,8 +56,11 @@ class Program:
         tk.Button(self.output_Frame,text="COPY",width=9).grid(padx=2,row=4,column=2)
         tk.Button(self.output_Frame,text="COPY",width=9).grid(padx=2,row=5,column=2)
 
+        tk.Button(self.window,text="CREATE HASH").grid(pady=20,row=2,column=0)
+
         self.window.mainloop()
 
 if __name__ == "__main__":
     Program()
+
 

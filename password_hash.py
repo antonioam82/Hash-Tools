@@ -10,7 +10,7 @@ class Program:
     def __init__(self):
 
         self.window = tk.Tk()
-        self.window.geometry("671x365")
+        self.window.geometry("671x460")
         self.window.title("Password  hasher")
         #self.window.resizable(height=tk.FALSE,width=tk.FALSE)
 
@@ -37,6 +37,18 @@ class Program:
         tk.Label(self.output_Frame,text="SHA256").grid(pady=5,row=3,column=0)
         tk.Label(self.output_Frame,text="SHA384").grid(pady=5,row=4,column=0)
         tk.Label(self.output_Frame,text="SHA512").grid(pady=5,row=5,column=0)
+        self.md5Out = tk.Entry(self.output_Frame,width=63)
+        self.md5Out.grid(pady=1,row=0,column=1)
+        self.sha1Out = tk.Entry(self.output_Frame,width=63)
+        self.sha1Out.grid(pady=1,row=1,column=1)
+        self.sha224Out = tk.Entry(self.output_Frame,width=63)
+        self.sha224Out.grid(pady=1,row=2,column=1)
+        self.sha256Out = tk.Entry(self.output_Frame,width=63)
+        self.sha256Out.grid(pady=1,row=3,column=1)
+        self.sha384Out = tk.Entry(self.output_Frame,width=63)
+        self.sha384Out.grid(pady=1,row=4,column=1)
+        self.sha512Out = tk.Entry(self.output_Frame,width=63)
+        self.sha512Out.grid(pady=1,row=5,column=1)
 
         self.window.mainloop()
 

@@ -12,10 +12,11 @@ class Program:
         self.window = tk.Tk()
         self.window.geometry("671x365")
         self.window.title("Password  hasher")
-        self.window.resizable(height=tk.FALSE,width=tk.FALSE)
+        #self.window.resizable(height=tk.FALSE,width=tk.FALSE)
 
         self.currentDir = tk.StringVar()
         self.currentDir.set(os.getcwd())
+        algoritmos = ["md5","sha1","sha224","sha256","sha384","sha512"]
 
         tk.Entry(self.window,textvariable=self.currentDir,width=124).place(x=0,y=0)
         self.password_Frame = tk.LabelFrame(self.window,text="Password",fg="blue",padx=25,pady=10)
@@ -29,8 +30,13 @@ class Program:
         
 
         self.output_Frame = tk.LabelFrame(self.window,text="Password hash",fg="blue",padx=25,pady=10)
-        self.output_Frame.grid(row=1,column=0,padx=19,pady=30)
-        
+        self.output_Frame.grid(row=1,column=0,padx=19,pady=0)
+        tk.Label(self.output_Frame,text="MD5").grid(pady=5,row=0,column=0)
+        tk.Label(self.output_Frame,text="SHA1").grid(pady=5,row=1,column=0)
+        tk.Label(self.output_Frame,text="SHA224").grid(pady=5,row=2,column=0)
+        tk.Label(self.output_Frame,text="SHA256").grid(pady=5,row=3,column=0)
+        tk.Label(self.output_Frame,text="SHA384").grid(pady=5,row=4,column=0)
+        tk.Label(self.output_Frame,text="SHA512").grid(pady=5,row=5,column=0)
 
         self.window.mainloop()
 

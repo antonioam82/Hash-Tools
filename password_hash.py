@@ -3,7 +3,6 @@ import tkinter as tk
 from tkinter import messagebox
 #import threading
 import pyautogui
-import getpass
 import os
 
 class Program:
@@ -16,6 +15,8 @@ class Program:
 
         self.currentDir = tk.StringVar()
         self.currentDir.set(os.getcwd())
+        self.password = tk.StringVar()
+        self.confirmPassword = tk.StringVar()#
         algoritmos = ["md5","sha1","sha224","sha256","sha384","sha512"]
 
         tk.Entry(self.window,textvariable=self.currentDir,width=124).place(x=0,y=0)
@@ -23,9 +24,9 @@ class Program:
         self.password_Frame.grid(row=0,column=0,padx=19,pady=30)
         tk.Label(self.password_Frame,text="Enter Password:").grid(pady=5,row=0,column=0)
         tk.Label(self.password_Frame,text="Confirm password:"+" "*6).grid(pady=5,row=1,column=0)
-        self.Entry1 = tk.Entry(self.password_Frame,width=77)
+        self.Entry1 = tk.Entry(self.password_Frame,width=77,show="*")
         self.Entry1.grid(pady=1,row=0,column=1)
-        self.Entry2 = tk.Entry(self.password_Frame,width=77)
+        self.Entry2 = tk.Entry(self.password_Frame,width=77,show="*")
         self.Entry2.grid(pady=1,row=1,column=1)
         
 
@@ -62,5 +63,4 @@ class Program:
 
 if __name__ == "__main__":
     Program()
-
 

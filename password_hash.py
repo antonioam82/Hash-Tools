@@ -24,11 +24,14 @@ class Program:
         self.password_Frame.grid(row=0,column=0,padx=19,pady=30)
         tk.Label(self.password_Frame,text="Enter Password:").grid(pady=5,row=0,column=0)
         tk.Label(self.password_Frame,text="Confirm password:"+" "*6).grid(pady=5,row=1,column=0)
-        self.Entry1 = tk.Entry(self.password_Frame,width=77,show="*")
+        self.Entry1 = tk.Entry(self.password_Frame,textvariable=self.password,width=69,show="*")
         self.Entry1.grid(pady=1,row=0,column=1)
-        self.Entry2 = tk.Entry(self.password_Frame,width=77,show="*")
+        self.Entry2 = tk.Entry(self.password_Frame,textvariable=self.confirmPassword,width=69,show="*")
         self.Entry2.grid(pady=1,row=1,column=1)
-        
+        self.see1 = tk.Button(self.password_Frame,text="SEE",width=5,command=lambda:self.hider(0))
+        self.see1.grid(padx=2,row=0,column=2)
+        self.see2 = tk.Button(self.password_Frame,text="SEE",width=5,command=lambda:self.hider(1))
+        self.see2.grid(padx=2,row=1,column=2)
 
         self.output_Frame = tk.LabelFrame(self.window,text="Password hash",fg="blue",padx=25,pady=10)
         self.output_Frame.grid(row=1,column=0,padx=19,pady=0)
@@ -76,7 +79,26 @@ class Program:
     def init_task(self):
         threading.Thread(target=self.check_passwords).start()
 
+    def hider(self,v):
+        if v == 0:
+            if self.Entry1['show'] == "*":
+                self.Entry1['show'] = ""
+                self.see1['text'] = "HIDE"
+                
+            else:
+                self.Entry1['show'] = "*"
+                self.see1['text'] = "SEE"
+        else:
+            if self.Entry2['show'] == "*":
+                self.Entry2['show'] = ""
+                self.see2['text'] = "HIDE"
+            else:
+                self.Entry2['show'] = "*"
+                self.see2['text'] = "SEE"
+
+
 if __name__ == "__main__":
     Program()
+
 
 

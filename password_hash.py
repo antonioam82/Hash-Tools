@@ -30,9 +30,9 @@ class Program:
         self.Entry1.focus()
         self.Entry2 = tk.Entry(self.password_Frame,textvariable=self.confirmPassword,width=69,show="*")
         self.Entry2.grid(pady=1,row=1,column=1)
-        self.see1 = tk.Button(self.password_Frame,text="SEE",width=5,command=lambda:self.hider(0))
+        self.see1 = tk.Button(self.password_Frame,text="SHOW",width=5,command=lambda:self.hider(0))
         self.see1.grid(padx=2,row=0,column=2)
-        self.see2 = tk.Button(self.password_Frame,text="SEE",width=5,command=lambda:self.hider(1))
+        self.see2 = tk.Button(self.password_Frame,text="SHOW",width=5,command=lambda:self.hider(1))
         self.see2.grid(padx=2,row=1,column=2)
 
         self.output_Frame = tk.LabelFrame(self.window,text="Password hash",fg="blue",padx=25,pady=10)
@@ -88,17 +88,16 @@ class Program:
                 self.see1['text'] = "HIDE"
             else:
                 self.Entry1['show'] = "*"
-                self.see1['text'] = "SEE"
+                self.see1['text'] = "SHOW"
         else:
             if self.Entry2['show'] == "*":
                 self.Entry2['show'] = ""
                 self.see2['text'] = "HIDE"
             else:
                 self.Entry2['show'] = "*"
-                self.see2['text'] = "SEE"
+                self.see2['text'] = "SHOW"
 
 if __name__ == "__main__":
     Program()
-
 
 

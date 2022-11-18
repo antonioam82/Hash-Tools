@@ -9,9 +9,9 @@ class Program:
     def __init__(self):
 
         self.window = tk.Tk()
-        self.window.geometry("681x460")
+        self.window.geometry("681x490")
         self.window.title("Password  hasher")
-        #self.window.resizable(height=tk.FALSE,width=tk.FALSE)
+        self.window.resizable(height=tk.FALSE,width=tk.FALSE)
 
         self.currentDir = tk.StringVar()
         self.currentDir.set(os.getcwd())
@@ -20,8 +20,9 @@ class Program:
         algoritmos = ["md5","sha1","sha224","sha256","sha384","sha512"]
 
         tk.Entry(self.window,textvariable=self.currentDir,width=124).place(x=0,y=0)
-        self.password_Frame = tk.LabelFrame(self.window,text="Password",fg="blue",padx=25,pady=10)
-        self.password_Frame.grid(row=0,column=0,padx=19,pady=30)
+        tk.Label(self.window,font=('Arial',20,'bold'),text="Password Hash").grid(row=0,column=0,padx=25,pady=20)
+        self.password_Frame = tk.LabelFrame(self.window,text="Password",fg="blue",padx=25,pady=18)
+        self.password_Frame.grid(row=2,column=0,padx=19,pady=4)
         tk.Label(self.password_Frame,text="Enter Password:").grid(pady=5,row=0,column=0)
         tk.Label(self.password_Frame,text="Confirm password:"+" "*6).grid(pady=5,row=1,column=0)
         self.Entry1 = tk.Entry(self.password_Frame,textvariable=self.password,width=69,show="*")
@@ -35,7 +36,7 @@ class Program:
         self.see2.grid(padx=2,row=1,column=2)
 
         self.output_Frame = tk.LabelFrame(self.window,text="Password hash",fg="blue",padx=25,pady=10)
-        self.output_Frame.grid(row=1,column=0,padx=19,pady=0)
+        self.output_Frame.grid(row=3,column=0,padx=19,pady=0)
         tk.Label(self.output_Frame,text="MD5").grid(pady=5,row=0,column=0)
         tk.Label(self.output_Frame,text="SHA1").grid(pady=5,row=1,column=0)
         tk.Label(self.output_Frame,text="SHA224    ").grid(pady=5,row=2,column=0)
@@ -61,7 +62,7 @@ class Program:
         tk.Button(self.output_Frame,text="COPY",width=9).grid(padx=2,row=4,column=2)
         tk.Button(self.output_Frame,text="COPY",width=9).grid(padx=2,row=5,column=2)
 
-        tk.Button(self.window,text="CREATE HASH",command=self.init_task).grid(pady=20,row=2,column=0)
+        tk.Button(self.window,text="CREATE HASH",command=self.init_task).grid(pady=20,row=4,column=0)
 
         self.window.mainloop()
 
@@ -71,8 +72,8 @@ class Program:
                 print("ok")
             else:
                 messagebox.showwarning("ERROR","Passwords doesn't match")
-                self.Entry1.delete(0,tk.END)
-                self.Entry2.delete(0,tk.END)
+                #self.Entry1.delete(0,tk.END)
+                #self.Entry2.delete(0,tk.END)
         else:
             messagebox.showwarning("PASSWORD NOT PROVIDED","Enter password for hashing")
             

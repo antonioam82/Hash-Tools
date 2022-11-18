@@ -97,7 +97,6 @@ class Program:
                 self.Entry2['show'] = "*"
                 self.see2['text'] = "SEE"
 
-
 if __name__ == "__main__":
     Program()
 

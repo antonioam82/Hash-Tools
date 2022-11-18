@@ -26,6 +26,7 @@ class Program:
         tk.Label(self.password_Frame,text="Confirm password:"+" "*6).grid(pady=5,row=1,column=0)
         self.Entry1 = tk.Entry(self.password_Frame,textvariable=self.password,width=69,show="*")
         self.Entry1.grid(pady=1,row=0,column=1)
+        self.Entry1.focus()
         self.Entry2 = tk.Entry(self.password_Frame,textvariable=self.confirmPassword,width=69,show="*")
         self.Entry2.grid(pady=1,row=1,column=1)
         self.see1 = tk.Button(self.password_Frame,text="SEE",width=5,command=lambda:self.hider(0))
@@ -84,7 +85,6 @@ class Program:
             if self.Entry1['show'] == "*":
                 self.Entry1['show'] = ""
                 self.see1['text'] = "HIDE"
-                
             else:
                 self.Entry1['show'] = "*"
                 self.see1['text'] = "SEE"

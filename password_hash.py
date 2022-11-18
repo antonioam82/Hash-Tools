@@ -1,7 +1,7 @@
 import hashlib
 import tkinter as tk
 from tkinter import messagebox
-#import threading
+import threading
 import pyautogui
 import os
 
@@ -57,10 +57,26 @@ class Program:
         tk.Button(self.output_Frame,text="COPY",width=9).grid(padx=2,row=4,column=2)
         tk.Button(self.output_Frame,text="COPY",width=9).grid(padx=2,row=5,column=2)
 
-        tk.Button(self.window,text="CREATE HASH").grid(pady=20,row=2,column=0)
+        tk.Button(self.window,text="CREATE HASH",command=self.init_task).grid(pady=20,row=2,column=0)
 
         self.window.mainloop()
 
+    def check_passwords(self):
+        if self.Entry1.get() != "" and self.Entry2.get() != "":
+            if self.Entry1.get() == self.Entry2.get():
+                print("ok")
+            else:
+                messagebox.showwarning("ERROR","Passwords doesn't match")
+                self.Entry1.delete(0,tk.END)
+                self.Entry2.delete(0,tk.END)
+        else:
+            messagebox.showwarning("PASSWORD NOT PROVIDED","Enter password for hashing")
+            
+
+    def init_task(self):
+        threading.Thread(target=self.check_passwords).start()
+
 if __name__ == "__main__":
     Program()
+
 

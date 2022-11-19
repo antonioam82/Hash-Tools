@@ -73,6 +73,7 @@ class Program:
     def check_passwords(self):
         if self.Entry1.get() != "" and self.Entry2.get() != "":
             if self.Entry1.get() == self.Entry2.get():
+                # TODO: Borrar información que haya en los entries de salida
                 self.hash()
             else:
                 messagebox.showwarning("ERROR","Passwords doesn't match")
@@ -97,14 +98,6 @@ class Program:
             self.hashes.append(hash_)
             #self.hashes_outputs[c]['state'] = "disabled"
             c+=1
-            
-    def hider(self,v):
-        if self.password_entries[v]['show'] == "*":
-            self.password_entries[v]['show'] = ""
-            self.buttons[v]['text'] = "HIDE"
-        else:
-            self.password_entries[v]['show'] = "*"
-            self.buttons[v]['text'] = "SHOW"
 
 if __name__ == "__main__":
     Program()

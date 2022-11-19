@@ -63,6 +63,8 @@ class Program:
         tk.Button(self.output_Frame,text="COPY",width=9).grid(padx=2,row=5,column=2)
 
         tk.Button(self.window,text="CREATE HASH",command=self.init_task).grid(pady=20,row=4,column=0)
+        self.buttons = [self.see1,self.see2]
+        self.password_entries = [self.Entry1,self.Entry2]
 
         self.window.mainloop()
 
@@ -72,6 +74,8 @@ class Program:
                 self.hash()
             else:
                 messagebox.showwarning("ERROR","Passwords doesn't match")
+                #self.Entry1.delete(0,tk.END)
+                #self.Entry2.delete(0,tk.END)
         else:
             messagebox.showwarning("PASSWORD NOT PROVIDED","Enter password for hashing")
             
@@ -90,20 +94,12 @@ class Program:
             c+=1
 
     def hider(self,v):
-        if v == 0:
-            if self.Entry1['show'] == "*":
-                self.Entry1['show'] = ""
-                self.see1['text'] = "HIDE"
-            else:
-                self.Entry1['show'] = "*"
-                self.see1['text'] = "SHOW"
+        if self.password_entries[v]['show'] == "*":
+            self.password_entries[v]['show'] = ""
+            self.buttons[v]['text'] = "HIDE"
         else:
-            if self.Entry2['show'] == "*":
-                self.Entry2['show'] = ""
-                self.see2['text'] = "HIDE"
-            else:
-                self.Entry2['show'] = "*"
-                self.see2['text'] = "SHOW"
+            self.password_entries[v]['show'] = "*"
+            self.buttons[v]['text'] = "SHOW"
 
 if __name__ == "__main__":
     Program()

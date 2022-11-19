@@ -66,6 +66,7 @@ class Program:
         self.buttons = [self.see1,self.see2]
         self.password_entries = [self.Entry1,self.Entry2]
         self.hashes_outputs = [self.md5Out,self.sha1Out,self.sha224Out,self.sha256Out,self.sha384Out,self.sha512Out]
+        self.hashes = []
 
         self.window.mainloop()
 
@@ -93,6 +94,8 @@ class Program:
             hash_ = hasher.hexdigest()
             print(hash_)
             self.hashes_outputs[c].insert(0,hash_)
+            self.hashes.append(hash_)
+            #self.hashes_outputs[c]['state'] = "disabled"
             c+=1
             
     def hider(self,v):

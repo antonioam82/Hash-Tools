@@ -17,7 +17,7 @@ class Program:
         self.currentDir.set(os.getcwd())
         self.password = tk.StringVar()
         self.confirmPassword = tk.StringVar()#
-        algoritmos = ["md5","sha1","sha224","sha256","sha384","sha512"]
+        self.algorithms = ["md5","sha1","sha224","sha256","sha384","sha512"]
 
         tk.Entry(self.window,textvariable=self.currentDir,width=124).place(x=0,y=0)
         tk.Label(self.window,font=('Arial',20,'bold'),text="Password Hash").grid(row=0,column=0,padx=25,pady=20)
@@ -69,7 +69,7 @@ class Program:
     def check_passwords(self):
         if self.Entry1.get() != "" and self.Entry2.get() != "":
             if self.Entry1.get() == self.Entry2.get():
-                print("ok")
+                self.hash()
             else:
                 messagebox.showwarning("ERROR","Passwords doesn't match")
                 #self.Entry1.delete(0,tk.END)
@@ -80,6 +80,16 @@ class Program:
 
     def init_task(self):
         threading.Thread(target=self.check_passwords).start()
+
+    def hash(self):
+        data = self.Entry1.get()
+        b_data = bytes(data, 'utf-8')
+        c = 0
+        for i in self.algorithms:
+            hasher = hashlib.new(self.algorithms[c],b_data)
+            hash_ = hasher.hexdigest()
+            print(hash_)
+            c+=1
 
     def hider(self,v):
         if v == 0:
@@ -99,5 +109,4 @@ class Program:
 
 if __name__ == "__main__":
     Program()
-
 

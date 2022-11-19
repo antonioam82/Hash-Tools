@@ -72,8 +72,6 @@ class Program:
                 self.hash()
             else:
                 messagebox.showwarning("ERROR","Passwords doesn't match")
-                #self.Entry1.delete(0,tk.END)
-                #self.Entry2.delete(0,tk.END)
         else:
             messagebox.showwarning("PASSWORD NOT PROVIDED","Enter password for hashing")
             

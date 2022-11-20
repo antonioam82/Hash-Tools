@@ -87,7 +87,7 @@ class Program:
                 #self.Entry1.delete(0,tk.END)
                 #self.Entry2.delete(0,tk.END)
         else:
-            messagebox.showwarning("PASSWORD NOT PROVIDED","Enter password for hashing")
+            messagebox.showwarning("PASSWORD NOT PROVIDED","Enter password for hashing and confirm")
             
 
     def init_task(self):
@@ -124,3 +124,4 @@ class Program:
 
 if __name__ == "__main__":
     Program()
+

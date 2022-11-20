@@ -114,13 +114,13 @@ class Program:
             messagebox.showwarning("UNEXPECTED ERROR",str(e))
             
     def hider(self,v):
-        if self.password_entries[v]['show'] == "*":
-            self.password_entries[v]['show'] = ""
-            self.buttons[v]['text'] = "HIDE"
-        else:
-            self.password_entries[v]['show'] = "*"
-            self.buttons[v]['text'] = "SHOW"
+        if self.password_entries[v].get() != "":
+            if self.password_entries[v]['show'] == "*":
+                self.password_entries[v]['show'] = ""
+                self.buttons[v]['text'] = "HIDE"
+            else:
+                self.password_entries[v]['show'] = "*"
+                self.buttons[v]['text'] = "SHOW"
 
 if __name__ == "__main__":
     Program()
-

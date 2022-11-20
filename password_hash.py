@@ -1,8 +1,10 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import hashlib
 import tkinter as tk
 from tkinter import messagebox
 import threading
-import pyautogui
+import pyperclip
 import os
 
 class Program:
@@ -61,12 +63,12 @@ class Program:
         self.sha384Out.grid(pady=1,row=4,column=1)
         self.sha512Out = tk.Entry(self.output_Frame,textvariable=self.sha512H,width=75)
         self.sha512Out.grid(pady=1,row=5,column=1)
-        tk.Button(self.output_Frame,text="COPY",width=9).grid(padx=2,row=0,column=2)
-        tk.Button(self.output_Frame,text="COPY",width=9).grid(padx=2,row=1,column=2)
-        tk.Button(self.output_Frame,text="COPY",width=9).grid(padx=2,row=2,column=2)
-        tk.Button(self.output_Frame,text="COPY",width=9).grid(padx=2,row=3,column=2)
-        tk.Button(self.output_Frame,text="COPY",width=9).grid(padx=2,row=4,column=2)
-        tk.Button(self.output_Frame,text="COPY",width=9).grid(padx=2,row=5,column=2)
+        tk.Button(self.output_Frame,text="COPY",width=9,command=lambda:self.copy_hash(0)).grid(padx=2,row=0,column=2)
+        tk.Button(self.output_Frame,text="COPY",width=9,command=lambda:self.copy_hash(1)).grid(padx=2,row=1,column=2)
+        tk.Button(self.output_Frame,text="COPY",width=9,command=lambda:self.copy_hash(2)).grid(padx=2,row=2,column=2)
+        tk.Button(self.output_Frame,text="COPY",width=9,command=lambda:self.copy_hash(3)).grid(padx=2,row=3,column=2)
+        tk.Button(self.output_Frame,text="COPY",width=9,command=lambda:self.copy_hash(4)).grid(padx=2,row=4,column=2)
+        tk.Button(self.output_Frame,text="COPY",width=9,command=lambda:self.copy_hash(5)).grid(padx=2,row=5,column=2)
 
         tk.Button(self.window,text="CREATE HASH",command=self.init_task).grid(pady=20,row=4,column=0)
         self.buttons = [self.see1,self.see2]
@@ -101,8 +103,15 @@ class Program:
             print(hash_)
             self.hashes_outputs[c].set(hash_)
             self.hashes.append(hash_)
-            #self.hashes_outputs[c]['state'] = "disabled"
             c+=1
+
+    def copy_hash(self,v):
+        try:
+            if len(self.hashes_outputs[v].get()) > 1:
+                pyperclip.copy(self.hashes_outputs[v].get())
+                messagebox.showinfo("COPIED","Copied to clipboard.")
+        except Exception as e:
+            messagebox.showwarning("UNEXPECTED ERROR",str(e))
             
     def hider(self,v):
         if self.password_entries[v]['show'] == "*":
@@ -114,5 +123,4 @@ class Program:
 
 if __name__ == "__main__":
     Program()
-
 

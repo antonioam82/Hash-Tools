@@ -18,6 +18,12 @@ class Program:
         self.password = tk.StringVar()
         self.confirmPassword = tk.StringVar()#
         self.algorithms = ["md5","sha1","sha224","sha256","sha384","sha512"]
+        self.md5H = tk.StringVar()
+        self.sha1H = tk.StringVar()
+        self.sha224H = tk.StringVar()
+        self.sha256H = tk.StringVar()
+        self.sha384H = tk.StringVar()
+        self.sha512H = tk.StringVar()
 
         tk.Entry(self.window,textvariable=self.currentDir,width=124).place(x=0,y=0)
         tk.Label(self.window,font=('Arial',20,'bold'),text="Password Hash").grid(row=0,column=0,padx=25,pady=20)
@@ -43,17 +49,17 @@ class Program:
         tk.Label(self.output_Frame,text="SHA256    ").grid(pady=5,row=3,column=0)
         tk.Label(self.output_Frame,text="SHA384    ").grid(pady=5,row=4,column=0)
         tk.Label(self.output_Frame,text="SHA512    ").grid(pady=5,row=5,column=0)
-        self.md5Out = tk.Entry(self.output_Frame,width=75)
+        self.md5Out = tk.Entry(self.output_Frame,textvariable=self.md5H,width=75)
         self.md5Out.grid(pady=1,row=0,column=1)
-        self.sha1Out = tk.Entry(self.output_Frame,width=75)
+        self.sha1Out = tk.Entry(self.output_Frame,textvariable=self.sha1H,width=75)
         self.sha1Out.grid(pady=1,row=1,column=1)
-        self.sha224Out = tk.Entry(self.output_Frame,width=75)
+        self.sha224Out = tk.Entry(self.output_Frame,textvariable=self.sha224H,width=75)
         self.sha224Out.grid(pady=1,row=2,column=1)
-        self.sha256Out = tk.Entry(self.output_Frame,width=75)
+        self.sha256Out = tk.Entry(self.output_Frame,textvariable=self.sha256H,width=75)
         self.sha256Out.grid(pady=1,row=3,column=1)
-        self.sha384Out = tk.Entry(self.output_Frame,width=75)
+        self.sha384Out = tk.Entry(self.output_Frame,textvariable=self.sha384H,width=75)
         self.sha384Out.grid(pady=1,row=4,column=1)
-        self.sha512Out = tk.Entry(self.output_Frame,width=75)
+        self.sha512Out = tk.Entry(self.output_Frame,textvariable=self.sha512H,width=75)
         self.sha512Out.grid(pady=1,row=5,column=1)
         tk.Button(self.output_Frame,text="COPY",width=9).grid(padx=2,row=0,column=2)
         tk.Button(self.output_Frame,text="COPY",width=9).grid(padx=2,row=1,column=2)
@@ -65,7 +71,7 @@ class Program:
         tk.Button(self.window,text="CREATE HASH",command=self.init_task).grid(pady=20,row=4,column=0)
         self.buttons = [self.see1,self.see2]
         self.password_entries = [self.Entry1,self.Entry2]
-        self.hashes_outputs = [self.md5Out,self.sha1Out,self.sha224Out,self.sha256Out,self.sha384Out,self.sha512Out]
+        self.hashes_outputs = [self.md5H,self.sha1H,self.sha224H,self.sha256H,self.sha384H,self.sha512H]
         self.hashes = []
 
         self.window.mainloop()
@@ -73,7 +79,6 @@ class Program:
     def check_passwords(self):
         if self.Entry1.get() != "" and self.Entry2.get() != "":
             if self.Entry1.get() == self.Entry2.get():
-                # TODO: Borrar información que haya en los entries de salida
                 self.hash()
             else:
                 messagebox.showwarning("ERROR","Passwords doesn't match")
@@ -94,11 +99,20 @@ class Program:
             hasher = hashlib.new(self.algorithms[c],b_data)
             hash_ = hasher.hexdigest()
             print(hash_)
-            self.hashes_outputs[c].insert(0,hash_)
+            self.hashes_outputs[c].set(hash_)
             self.hashes.append(hash_)
             #self.hashes_outputs[c]['state'] = "disabled"
             c+=1
+            
+    def hider(self,v):
+        if self.password_entries[v]['show'] == "*":
+            self.password_entries[v]['show'] = ""
+            self.buttons[v]['text'] = "HIDE"
+        else:
+            self.password_entries[v]['show'] = "*"
+            self.buttons[v]['text'] = "SHOW"
 
 if __name__ == "__main__":
     Program()
+
 

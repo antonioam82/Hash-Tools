@@ -23,7 +23,7 @@ while True:
     print(f"{c}-Finalizar programa")
 
     try:
-        nAlgoritmo = int(input("Introducir opción: "))
+        nAlgoritmo = int(input("\nIntroducir opción: "))
  
         if nAlgoritmo > 0 and nAlgoritmo <= len(algoritmos)+1:
  

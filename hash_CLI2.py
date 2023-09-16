@@ -20,7 +20,7 @@ while True:
         else:
             print(f"{c}-Generar hash usando algoritmo {i.upper()}")
         c+=1
-    print(f"{c}-Finalizar programa")
+    print(f"{c}-Finalizar programa" + Fore.RESET)
 
     try:
         nAlgoritmo = int(input("\nIntroducir opción: "))

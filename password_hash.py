@@ -28,7 +28,7 @@ class Program:
         self.sha512H = tk.StringVar()
 
         tk.Entry(self.window,textvariable=self.currentDir,width=124).place(x=0,y=0)
-        tk.Label(self.window,font=('Arial',20,'bold'),text="Password Hash").grid(row=0,column=0,padx=25,pady=20)
+        tk.Label(self.window,font=('Arial',20,'bold'),text="Password Hasher").grid(row=0,column=0,padx=25,pady=20)
         self.password_Frame = tk.LabelFrame(self.window,text="Password",fg="blue",padx=25,pady=18)
         self.password_Frame.grid(row=2,column=0,padx=19,pady=4)
         tk.Label(self.password_Frame,text="Enter Password:").grid(pady=5,row=0,column=0)
@@ -124,4 +124,5 @@ class Program:
 
 if __name__ == "__main__":
     Program()
+
 
